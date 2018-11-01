@@ -3,7 +3,7 @@ const Joi = require("joi");
 const app = express();
 
 const port = process.env.PORT | 3000;
-
+console.log(port);
 app.use(express.json());
 
 var courses = [
