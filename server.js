@@ -1,10 +1,14 @@
 const express = require('express');
 const Joi = require("joi");
+const hbs = require("hbs");
+
 const app = express();
+
 
 const port = process.env.PORT || 3000;
 console.log(port);
 app.use(express.json());
+app.set('view engine','hbs');
 
 var courses = [
     {id:1, name:"Java"},
@@ -13,7 +17,11 @@ var courses = [
 ];
 
 app.get("/", (req, res)=>{
-    res.send("Hello World!");
+    //res.send("Hello World!");
+    res.render("home.hbs",{
+        pageTitle : "Home",
+        currentYear : new Date().getFullYear()
+    });
 });
 
 app.get("/api/courses", (req,res)=>{
